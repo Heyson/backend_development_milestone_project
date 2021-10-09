@@ -55,7 +55,11 @@ body {
 
 .quinary-bg {
     background-color: #0f292f;
-} 
+}
+
+.border-tertiary {
+    border: 1px solid #cccccc;
+}
 
 nav ul a {
     color:#14a098;
