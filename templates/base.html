@@ -1,24 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <!-- Compiled and minified CSS -->
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" type="text/css">
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" type="text/css">
-     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css')}}" type="text/css">
-     {% block styles %}
-     {% endblock %}
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
+        type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+        type="text/css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css')}}" type="text/css">
+    {% block styles %}
+    {% endblock %}
 
     <title>TV Fanatics</title>
 </head>
+
 <body>
     <header>
+        <!-- hero slider-->
+        <div class="row">
+            <div class="slider">
+                <ul class="slides">
+                    <li>
+                        <img src="https://lorempixel.com/580/250/nature/1"> <!-- random image -->
+                        <div class="caption center-align">
+                            <h3>This is our big Tagline!</h3>
+                            <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+                        </div>
+                    </li>
+                    <li>
+                        <img src="https://lorempixel.com/580/250/nature/2"> <!-- random image -->
+                        <div class="caption left-align">
+                            <h3>Left Aligned Caption</h3>
+                            <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+                        </div>
+                    </li>
+                    <li>
+                        <img src="https://lorempixel.com/580/250/nature/3"> <!-- random image -->
+                        <div class="caption right-align">
+                            <h3>Right Aligned Caption</h3>
+                            <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+                        </div>
+                    </li>
+                    <li>
+                        <img src="https://lorempixel.com/580/250/nature/4"> <!-- random image -->
+                        <div class="caption center-align">
+                            <h3>This is our big Tagline!</h3>
+                            <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
         <!-- top navbar-->
         <nav class="nav-extended text-shadow quinary-bg quaternary-color">
             <div class="nav-wrapper">
-                <a href="{{ url_for('get_episode_review')}}" data-target="mobile-demo" class="sidenav-trigger right"><i class="material-icons"><i class="fas fa-bars"></i></a>
+                <a href="{{ url_for('get_episode_review')}}" data-target="mobile-demo" class="sidenav-trigger right"><i
+                        class="material-icons"><i class="fas fa-bars"></i></a>
                 <a href="#" class=""><i class="fas fa-clapperboard logo"></i>TV FANATICS.COM</a>
                 <ul class="right hide-on-med-and-down">
                     <li><a href="{{ url_for('get_episode_review')}}">Home</a></li>
@@ -33,25 +73,27 @@
         </nav>
         <!-- mobile sidenav -->
         <ul class="sidenav" id="mobile-demo">
-                    <a href="#!" class="brand-logo"><i class="fas fa-clapperboard"></i>TV FANATICS.COM</a>
-                    <li><a href="{{ url_for('get_episode_review')}}">Home</a></li>
-                    <li><a href="#">Profile</a></li>
-                    <li><a href="#">Episode Review</a></li>
-                    <li><a href="#">Manage Reviews</a></li>
-                    <li><a href="#">Log Out</a></li>
-                    <li><a href="#">Log In</a></li>
-                    <li><a href="{{ url_for('signup')}}">Sign Up</a></li>
+            <a href="#!" class="brand-logo"><i class="fas fa-clapperboard"></i>TV FANATICS.COM</a>
+            <li><a href="{{ url_for('get_episode_review')}}">Home</a></li>
+            <li><a href="#">Profile</a></li>
+            <li><a href="#">Episode Review</a></li>
+            <li><a href="#">Manage Reviews</a></li>
+            <li><a href="#">Log Out</a></li>
+            <li><a href="#">Log In</a></li>
+            <li><a href="{{ url_for('signup')}}">Sign Up</a></li>
         </ul>
 
     </header>
     {% block content%}
     {% endblock %}
 
-      <!-- Compiled and minified Jquery and JavaScript -->
-      <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-      <script src="{{ url_for('static', filename='js/script.js')}}"></script>
-      {% block scripts %}
-      {% endblock %}
+    <!-- Compiled and minified Jquery and JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="{{ url_for('static', filename='js/script.js')}}"></script>
+    {% block scripts %}
+    {% endblock %}
 </body>
+
 </html>
