@@ -1,6 +1,10 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
 body {
     background-color: #0c1c25;
     color: #cccccc;
+    font-family: 'Bebas Neue', cursive;
 }
 
 .logo {
@@ -22,6 +26,10 @@ nav, nav .nav-wrapper i, nav a.sidenav-trigger, nav a.sidenav-trigger i {
 
 .text-shadow {
     text-shadow: 2px 2px 2px rgba(0,0,0, 0.5)
+}
+
+.flashes h4 {
+    line-height: 2;
 }
 
 .primary-color{

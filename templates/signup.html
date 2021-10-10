@@ -9,7 +9,7 @@
                 <div class="row">
                     <div class="input-field col s12">
                         <i class="fas fa-user-plus prefix tertiary-color"></i>
-                        <input id="username" name="username" type="text" class="validate">
+                        <input id="username" name="username" type="text" minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" class="validate" required>
                         <label for="username">User Name</label>
                     </div>
                 </div>
@@ -18,13 +18,13 @@
             <div class="row">
                 <div class="input-field col s12">
                     <i class="fas fa-user-lock prefix tertiary-color"></i>
-                    <input id="password" name="password" type="password" class="validate">
+                    <input id="password" name="password" type="password" minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" class="validate" required>
                     <label for="password">Password</label>
                 </div>
             </div>
             <!-- signup -->
             <div class="row">
-                <button type="submit" class="col s12 btn-large tertiary-color secondary-bg text-shadow">
+                <button type="submit" class="col s3 offset-m4 btn-large tertiary-color secondary-bg text-shadow">
                     Sign Up <i class="fas fa-sign-in-alt"></i>
                 </button>
             </div>
