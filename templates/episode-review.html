@@ -1,28 +1,22 @@
 {% extends "base.html" %}
 {% block content %}
 
-
-    {% for review in reviews %}
-        {{ review.episode_to_review }}
-        {{ review.new_episode_review }}<br>
-        {{ review.episode_review_description }}<br>
-        {{ review.been_reviewed }}<br>
-        {{ review.due_date }}<br>
-    {% endfor %}
-
     <ul class="collapsible">
+        {% for review in reviews %}
         <li>
-          <div class="collapsible-header"><i class="fas fa-caret-down"></i>First</div>
-          <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+          <div class="collapsible-header">
+            <i class="fas fa-caret-down"></i>
+            <strong>{{ review.episode_to_review }}</strong> : {{ review.due_date }}
+            {% if review.been_reviewed == "on" %}
+              <i class="fas fa-exclamation-circle secondary-color tooltipped " data-position="right" data-tooltip="Needs Review"></i>
+            {% endif %}
+          </div>
+          <div class="collapsible-body">
+            <strong>{{ review.new_episode_review }}</strong>
+            <p>{{ review.episode_review_description }}</p>
+          </div>
         </li>
-        <li>
-          <div class="collapsible-header"><i class="fas fa-caret-down"></i>Second</div>
-          <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-        </li>
-        <li>
-          <div class="collapsible-header"><i class="fas fa-caret-down"></i>Third</div>
-          <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-        </li>
+        {% endfor %}
       </ul>
             
 

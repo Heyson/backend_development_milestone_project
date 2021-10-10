@@ -23,7 +23,7 @@ def home():
 
 @app.route("/get_episode_review")
 def get_episode_review():
-    reviews = mongo.db.reviews.find()
+    reviews = list(mongo.db.reviews.find())
     return render_template("episode-review.html", reviews=reviews)
 
 
