@@ -19,6 +19,9 @@
 
 <body>
     <header>
+        {% if session.user %}
+        <div>&nbsp;</div>
+        {% else %}
         <!-- hero slider-->
         <div class="row">
             <div class="slider">
@@ -54,6 +57,7 @@
                 </ul>
             </div>
         </div>
+        {% endif %}
         <!-- top navbar-->
         <nav class="nav-extended text-shadow quinary-bg quaternary-color">
             <div class="nav-wrapper secondary-bg">
@@ -62,12 +66,15 @@
                 <a href="#" class=""><i class="fas fa-clapperboard logo"></i><span>TV FANATICS.COM</span></a>
                 <ul class="right hide-on-med-and-down">
                     <li><a href="{{ url_for('get_episode_review')}}">Home</a></li>
+                    {% if session.user %}
                     <li><a href="{{ url_for('profile', username=session['user'])}}">Profile</a></li>
                     <li><a href="#">Episode Review</a></li>
                     <li><a href="#">Manage Reviews</a></li>
-                    <li><a href="#">Log Out</a></li>
+                    <li><a href="{{ url_for('logout')}}">Log Out</a></li>
+                    {% else %}
                     <li><a href="{{ url_for('login')}}">Log In</a></li>
                     <li><a href="{{ url_for('signup')}}">Sign Up</a></li>
+                    {% endif %}
                 </ul>
             </div>
         </nav>
@@ -75,28 +82,31 @@
         <ul class="sidenav" id="mobile-demo">
             <a href="#!" class="brand-logo"><i class="fas fa-clapperboard"></i>TV FANATICS.COM</a>
             <li><a href="{{ url_for('get_episode_review')}}">Home</a></li>
+            {% if session.user %}
             <li><a href="{{ url_for('profile', username=session['user'])}}">Profile</a></li>
             <li><a href="#">Episode Review</a></li>
             <li><a href="#">Manage Reviews</a></li>
-            <li><a href="#">Log Out</a></li>
-            <li><a href="#">Log In</a></li>
+            <li><a href="{{ url_for('logout')}}">Log Out</a></li>
+            {% else %}
+            <li><a href="{{ url_for('login')}}">Log In</a></li>
             <li><a href="{{ url_for('signup')}}">Sign Up</a></li>
+            {% endif %}
         </ul>
 
     </header>
     <section>
         <!-- flash messages -->
-            {% with messages = get_flashed_messages() %}
-                {% if messages %}
-                    {% for message in messages %}
-                        <div class="row flashes">
-                            <h4 class="center-align quaternary-color secondary-color tertiary-bg">
-                                {{ message }}
-                            </h4>
-                        </div>
-                    {% endfor%}
-                {% endif%}
-            {% endwith %}
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        {% for message in messages %}
+        <div class="row flashes">
+            <h4 class="center-align quaternary-color secondary-color tertiary-bg">
+                {{ message }}
+            </h4>
+        </div>
+        {% endfor%}
+        {% endif%}
+        {% endwith %}
     </section>
     <main class="container">
         {% block content%}
