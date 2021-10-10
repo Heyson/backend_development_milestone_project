@@ -1,14 +1,14 @@
 {% extends "base.html" %}
 {% block content %}
-<h3 class="center-align">Sign Up</h3>
+<h3 class="center-align">Log In</h3>
 <div class="row">
-    <form class="col s12 m8 offset-m2" method="POST" action="{{ url_for('signup')}}">
+    <form class="col s12 m8 offset-m2" method="POST" action="{{ url_for('login')}}">
         <div class="card-panel primary-bg border-tertiary">
             <!-- username-->
             <div class="row">
                 <div class="row">
                     <div class="input-field col s12">
-                        <i class="fas fa-user-plus prefix tertiary-color"></i>
+                        <i class="fas fa-user-cog prefix tertiary-color"></i>
                         <input id="username" name="username" type="text" minlength="5" maxlength="15" pattern="^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9]{5,15}$" class="validate" required>
                         <label for="username">User Name</label>
                     </div>
@@ -22,22 +22,22 @@
                     <label for="password">Password</label>
                 </div>
             </div>
-            <!-- signup -->
+            <!-- log in -->
             <div class="row">
                 <button type="submit" class="col s3 offset-m4 btn-large tertiary-color secondary-bg text-shadow">
-                    Sign Up <i class="fas fa-sign-in-alt"></i>
+                    Log In <i class="fas fa-sign-in-alt"></i>
                 </button>
             </div>
         </div>
     </form>
 </div>
+
 <div class="row">
     <div class="col s12">
         <p>
-            Already Signed Up? <a href="{{ url_for('login') }}" class="secondary-color tertiary-bg">Log In</a>
+            Need to Sign Up? <a href="{{ url_for('signup') }}" class="secondary-color tertiary-bg">Sign Up Here!</a>
         </p>
     </div>
 </div>
-
 
 {% endblock %}
