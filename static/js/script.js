@@ -1,3 +1,4 @@
+// side nav functionality
 $(document).ready(function(){
     $('.sidenav').sidenav({edge: "right"});
   });
@@ -6,3 +7,8 @@ $(document).ready(function(){
 $(document).ready(function(){
     $('.slider').slider();
   });
+
+// accordian collapse functionality
+$(document).ready(function(){
+  $('.collapsible').collapsible();
+});
