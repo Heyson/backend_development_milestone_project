@@ -21,7 +21,8 @@ mongo = PyMongo(app)
 def home():
     return render_template("home.html")
 
-@app.route("/get_episode_review")
+
+@app.route("/episode_review")
 def get_episode_review():
     reviews = list(mongo.db.reviews.find())
     return render_template("episode-review.html", reviews=reviews)
@@ -49,6 +50,7 @@ def signup():
         return redirect(url_for("profile", username=session["user"]))
     return render_template("signup.html")
 
+
 @app.route("/login", methods=["GET", "POST"])
 def login():
     if request.method == "POST":
@@ -73,6 +75,7 @@ def login():
 
     return render_template("login.html")
 
+
 @app.route("/profile/<username>", methods=["GET", "POST"])
 def profile(username):
     # grab the session user's username from db
@@ -84,6 +87,7 @@ def profile(username):
 
     return redirect(url_for("login"))
 
+
 @app.route("/logout")
 def logout():
     # remove user from session cookies
@@ -91,9 +95,24 @@ def logout():
     session.pop("user")
     return redirect(url_for("login"))
 
-@app.route("/manage_reviews")
+
+@app.route("/manage_reviews", methods=["GET", "POST"])
 def manage_reviews():
-    episodes = mongo.db.episodes.find().sort("new_episodes_review", 1)
+    if request.method == "POST":
+        been_reviewed = "on" if request.form.get("is_urgent") else "off"
+        review = {
+            "new_episode_review": request.form.get("new_episode_review"),
+            "episode_to_review": request.form.get("episode_to_review"),
+            "episode_review_description": request.form.get("episode_review_description"),
+            "been_reviewed": been_reviewed,
+            "due_date": request.form.get("due_date"),
+            "created_by": session["user"]
+        }
+        mongo.db.reviews.insert_one(review)
+        flash("Episode to be Reviewed has been Successfully Added.")
+        return redirect(url_for("get_episode_review"))
+
+    episodes = mongo.db.episodes.find().sort("new_episode_review", 1)
     return render_template("manage_reviews.html", episodes=episodes)
 
 if __name__ == "__main__":

@@ -6,7 +6,7 @@
         <li class="quaternary-color-border">
           <div class="collapsible-header">
             <i class="fas fa-caret-down secondary-color quinary-color-border quaternary-bg"></i>
-            <strong class="quaternary-color">{{ review.episode_to_review }}</strong>&nbsp;&nbsp; : &nbsp;&nbsp; <span class="quinary-color">{{ review.due_date }}</span>
+            <strong class="quaternary-color">{{ review.new_episode_review }}</strong>&nbsp;&nbsp; : &nbsp;&nbsp; <span class="quinary-color">{{ review.due_date }}</span>
             {% if review.been_reviewed == "on" %}
             &nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-exclamation-circle fas fa-clapperboard secondary-color tooltipped " data-position="right" data-tooltip="Needs Review"></i>
             {% endif %}
@@ -14,6 +14,7 @@
           <div class="collapsible-body">
             <strong>{{ review.new_episode_review }}</strong>
             <p>{{ review.episode_review_description }}</p>
+            <p><em>by: {{ review.created_by }}</em></p>
           </div>
         </li>
         {% endfor %}
