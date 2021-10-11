@@ -3,12 +3,12 @@
 
     <ul class="collapsible">
         {% for review in reviews %}
-        <li>
+        <li class="quaternary-color-border">
           <div class="collapsible-header">
-            <i class="fas fa-caret-down"></i>
-            <strong>{{ review.episode_to_review }}</strong> : {{ review.due_date }}
+            <i class="fas fa-caret-down secondary-color quinary-color-border quaternary-bg"></i>
+            <strong class="quaternary-color">{{ review.episode_to_review }}</strong>&nbsp;&nbsp; : &nbsp;&nbsp; <span class="quinary-color">{{ review.due_date }}</span>
             {% if review.been_reviewed == "on" %}
-              <i class="fas fa-exclamation-circle secondary-color tooltipped " data-position="right" data-tooltip="Needs Review"></i>
+            &nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-exclamation-circle fas fa-clapperboard secondary-color tooltipped " data-position="right" data-tooltip="Needs Review"></i>
             {% endif %}
           </div>
           <div class="collapsible-body">

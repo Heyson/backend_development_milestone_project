@@ -4,7 +4,6 @@
 body {
     background-color: #0c1c25;
     color: #cccccc;
-    font-family: 'Bebas Neue', cursive;
 }
 
 .logo {
@@ -13,7 +12,10 @@ body {
     text-align: center;
     border-radius: 5px;
     margin-left: 20px;
-   
+}
+
+.logo-font {
+    font-family: 'Bebas Neue', cursive;
 }
 
 nav a span {
@@ -48,10 +50,18 @@ nav, nav .nav-wrapper i, nav a.sidenav-trigger, nav a.sidenav-trigger i {
     color: #14a098;
 } 
 
+.quaternary-color-border {
+    border:3px solid #14a098;
+    border-radius: 5px;
+} 
+
 .quinary-color{
     color: #0f292f;
 } 
-
+.quinary-color-border {
+    border: 2px solid #0f292f;
+    border-radius: 3px;
+} 
 .primary-bg {
     background-color: #501f3a;
 } 
