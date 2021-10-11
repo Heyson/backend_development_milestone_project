@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h3 class="secondary-color text-center-align">
-    Add Episode to be Reviewed
-</h3>
+<h5 class="secondary-color text-center-align">
+    Create Episode to be Reviewed
+</h5>
 <div class="row card-panel grey lighten-5">
     <form class="col s12" method="POST" action="{{ url_for('manage_reviews')}}">
         <!-- new episode to review -->
@@ -11,11 +11,9 @@
             <div class="input-field col s12">
                 <i class="fas fa-television prefix quaternary-color"></i>
                 <select id="new_episode_review" name="new_episode_review" class="validate" required>
+                    <option value="" disabled selected ><em>Choose TV Show</em></option>
                     {% for episode in episodes %}
-                    <option value="{{ episode.new_episode_review}}" >Choose TV Show</option>
-                    {% endfor %}
-                    {% for episode in episodes %}
-                    <option value="{{ episode.new_episode_review}}">{{ episode.new_episode_review}}</option>
+                    <option value="{{ episode.new_episode_review}}" title="Choose TV Show">{{ episode.new_episode_review}}</option>
                     {% endfor %}
                 </select>
             </div>
