@@ -9,6 +9,18 @@
         <div class="row">
             <div class="input-field col s12">
                 <i class="fas fa-television prefix quaternary-color"></i>
+                <select id="new_episode_review" name="new_episode_review" class="validate" required>
+                    <option value="" disabled selected>Choose TV Show</option>
+                    {% for episode in episodes %}
+                    <option value="{{ episode.new_episode_review}}">{{ episode.new_episode_review}}</option>
+                    {% endfor %}
+                </select>
+                <label>Materialize Select</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="fas fa-clapperboard prefix quaternary-color"></i>
                 <input id="episode_to_review" minlength="5" maxlength="50" type="text" class="validate" required>
                 <label for="episode_to_review">Episode Title</label>
             </div>
@@ -16,9 +28,9 @@
         <div class="row">
             <div class="input-field col s12">
                 <i class="fas fa-align-left  prefix quaternary-color"></i>
-                <textarea id="episode_review_description" name="episode_review_description" minlength="5" 
-                maxlength="500" class="materialize-textarea validate" required></textarea>
-          <label for="episode_review_description">Episode Synopsis</label>
+                <textarea id="episode_review_description" name="episode_review_description" minlength="5"
+                    maxlength="500" class="materialize-textarea validate" required></textarea>
+                <label for="episode_review_description">Episode Synopsis</label>
             </div>
         </div>
         <div class="row">
@@ -31,13 +43,14 @@
         <div class="row">
             <div class="input-field col s12">
                 <div class="switch">
-                    <i class="fas fa-exclamation-circle fas fa-clapperboard secondary-color tooltipped " data-position="right" data-tooltip="Needs Review"></i>
+                    <i class="fas fa-exclamation-circle fas fa-clapperboard secondary-color tooltipped "
+                        data-position="right" data-tooltip="Needs Review"></i>
                     <label for="been_reviewed">
-                      <input type="checkbox" id="been_reviewed" name="been_reviewed">
-                      <span class="lever"></span>
-                      Needs Review
+                        <input type="checkbox" id="been_reviewed" name="been_reviewed">
+                        <span class="lever"></span>
+                        Needs Review
                     </label>
-                  </div>
+                </div>
             </div>
         </div>
     </form>
