@@ -4,18 +4,40 @@
 <h3 class="secondary-color text-center-align">
     Add Episode to be Reviewed
 </h3>
-<div class="row">
+<div class="row card-panel grey lighten-5">
     <form class="col s12" method="POST" action="">
         <div class="row">
             <div class="input-field col s12">
-                <i class="fas fa-user-circle prefix quaternary-color"></i>
-                <input id="icon_prefix" type="text" class="validate">
-                <label for="icon_prefix">Tv Show Title</label>
+                <i class="fas fa-television prefix quaternary-color"></i>
+                <input id="episode_to_review" minlength="5" maxlength="50" type="text" class="validate" required>
+                <label for="episode_to_review">Episode Title</label>
             </div>
+        </div>
+        <div class="row">
             <div class="input-field col s12">
-                <i class="fas fa-clapperboard  prefix quaternary-color"></i>
-                <input id="icon_telephone" type="tel" class="validate">
-                <label for="icon_telephone">Episode Title</label>
+                <i class="fas fa-align-left  prefix quaternary-color"></i>
+                <textarea id="episode_review_description" name="episode_review_description" minlength="5" 
+                maxlength="500" class="materialize-textarea validate" required></textarea>
+          <label for="episode_review_description">Episode Synopsis</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="fas fa-calendar-alt prefix quaternary-color"></i>
+                <input id="due_date" name="due_date" type="text" class=" datepicker validate" required>
+                <label for="due_date">Due Date</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <div class="switch">
+                    <i class="fas fa-exclamation-circle fas fa-clapperboard secondary-color tooltipped " data-position="right" data-tooltip="Needs Review"></i>
+                    <label for="been_reviewed">
+                      <input type="checkbox" id="been_reviewed" name="been_reviewed">
+                      <span class="lever"></span>
+                      Needs Review
+                    </label>
+                  </div>
             </div>
         </div>
     </form>
