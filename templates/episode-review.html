@@ -1,6 +1,8 @@
 {% extends "base.html" %}
 {% block content %}
-
+<h3 class="secondary-color text-center-align">
+  All Episode to be Reviewed
+</h3>
     <ul class="collapsible">
         {% for review in reviews %}
         <li class="quaternary-color-border">
@@ -13,6 +15,7 @@
           </div>
           <div class="collapsible-body">
             <strong>{{ review.new_episode_review }}</strong>
+            <p>{{ review.episode_to_review }}</p>
             <p>{{ review.episode_review_description }}</p>
             <p><em>by: {{ review.created_by }}</em></p>
           </div>
