@@ -99,7 +99,7 @@ def logout():
 @app.route("/manage_reviews", methods=["GET", "POST"])
 def manage_reviews():
     if request.method == "POST":
-        been_reviewed = "on" if request.form.get("is_urgent") else "off"
+        been_reviewed = "on" if request.form.get("been_reviewed") else "off"
         review = {
             "new_episode_review": request.form.get("new_episode_review"),
             "episode_to_review": request.form.get("episode_to_review"),
