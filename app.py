@@ -91,6 +91,9 @@ def logout():
     session.pop("user")
     return redirect(url_for("login"))
 
+@app.route("/manage_reviews")
+def manage_reviews():
+        return render_template("manage_reviews.html")
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),

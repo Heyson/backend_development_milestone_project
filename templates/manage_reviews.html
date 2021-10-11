@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h3 class="secondary-color text-center-align">
+    Add Episode to be Reviewed
+</h3>
+<div class="row">
+    <form class="col s12" method="POST" action="">
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="fas fa-user-circle prefix quaternary-color"></i>
+                <input id="icon_prefix" type="text" class="validate">
+                <label for="icon_prefix">Tv Show Title</label>
+            </div>
+            <div class="input-field col s12">
+                <i class="fas fa-clapperboard  prefix quaternary-color"></i>
+                <input id="icon_telephone" type="tel" class="validate">
+                <label for="icon_telephone">Episode Title</label>
+            </div>
+        </div>
+    </form>
+</div>
+
+{% endblock %}
