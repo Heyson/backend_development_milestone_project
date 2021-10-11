@@ -122,3 +122,11 @@ nav i, nav [class^="mdi-"], nav [class*="mdi-"], nav i.material-icons {
     background-color:  #cb2d6f;
 }
 
+.btn-small {
+    margin: 5px;
+}
+
+.collapsible-header .col strong {
+    margin: 5px;
+    line-height: 42px;
+}
