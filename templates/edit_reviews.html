@@ -11,9 +11,13 @@
             <div class="input-field col s12">
                 <i class="fas fa-television prefix quaternary-color"></i>
                 <select id="new_episode_review" name="new_episode_review" class="validate" required>
-                    <option value="" disabled selected ><em>Choose TV Show</em></option>
+                    <option value="" disabled><em>Choose TV Show</em></option>
                     {% for episode in episodes %}
-                    <option value="{{ episode.new_episode_review}}" title="Choose TV Show">{{ episode.new_episode_review}}</option>
+                    {% if episode.new_episode_review == review.new_episode_review %}
+                        <option value="{{ episode.new_episode_review}}" selected>{{ episode.new_episode_review}}</option>
+                    {% else %}
+                        <option value="{{ episode.new_episode_review}}" >{{ episode.new_episode_review}}</option>
+                    {% endif %}
                     {% endfor %}
                 </select>
             </div>
@@ -22,7 +26,7 @@
         <div class="row">
             <div class="input-field col s12">
                 <i class="fas fa-clapperboard prefix quaternary-color"></i>
-                <input id="episode_to_review" name="episode_to_review" minlength="5" maxlength="50" type="text" class="validate" required>
+                <input id="episode_to_review" name="episode_to_review" minlength="5" maxlength="50" value="{{ review.episode_to_review }}" type="text" class="validate" required>
                 <label for="episode_to_review">Episode Title</label>
             </div>
         </div>
@@ -31,7 +35,9 @@
             <div class="input-field col s12">
                 <i class="fas fa-align-left  prefix quaternary-color"></i>
                 <textarea id="episode_review_description" name="episode_review_description" minlength="5"
-                    maxlength="500" class="materialize-textarea validate" required></textarea>
+                    maxlength="500" class="materialize-textarea validate" required>
+                    {{- review.episode_review_description -}}
+                </textarea>
                 <label for="episode_review_description">Episode Synopsis</label>
             </div>
         </div>
@@ -39,7 +45,7 @@
         <div class="row">
             <div class="input-field col s12">
                 <i class="fas fa-calendar-alt prefix quaternary-color"></i>
-                <input id="due_date" name="due_date" type="text" class=" datepicker validate" required>
+                <input id="due_date" name="due_date" type="text" value="{{ review.due_date }}" class=" datepicker validate" required>
                 <label for="due_date">Due Date</label>
             </div>
         </div>
@@ -50,7 +56,11 @@
                     <i class="fas fa-exclamation-circle fas fa-clapperboard secondary-color tooltipped "
                         data-position="right" data-tooltip="Needs Review"></i>
                     <label for="been_reviewed">
-                        <input type="checkbox" id="been_reviewed" name="been_reviewed">
+                        {% if review.been_reviewd == "on" %}
+                            <input type="checkbox" id="been_reviewed" name="been_reviewed" checked>
+                        {% else %}
+                            <input type="checkbox" id="been_reviewed" name="been_reviewed">
+                        {% endif %}
                         <span class="lever"></span>
                         Needs Review
                     </label>
@@ -60,6 +70,10 @@
         <!-- submit button -->
         <div class="row">
             <div class="col s12 center-align">
+                <!-- cancel button -->
+                <a href="{{ url_for('get_episode_review')}}" class="btn-large red text-shadow">
+                    Cancel <i class="fas fa-times-circle right"></i>
+                </a>
                 <button type="submit" class="btn-large secondary-color">
                     Edit Review <i class="fas fa-edit right"></i>
                 </button>
