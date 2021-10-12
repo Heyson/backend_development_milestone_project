@@ -7,11 +7,17 @@
         {% for review in reviews %}
         <li class="quaternary-color-border">
           <div class="collapsible-header">
-            <i class="fas fa-caret-down secondary-color quinary-color-border quaternary-bg"></i>
-            <strong class="quaternary-color">{{ review.new_episode_review }}</strong>&nbsp;&nbsp; : &nbsp;&nbsp; <span class="quinary-color">{{ review.due_date }}</span>
-            {% if review.been_reviewed == "on" %}
-            &nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-exclamation-circle fas fa-clapperboard secondary-color tooltipped " data-position="right" data-tooltip="Needs Review"></i>
-            {% endif %}
+            <div class="col s3">
+              <i class="fas fa-caret-down secondary-color quinary-color-border quaternary-bg"></i>
+              <a href="" class="btn-small green accent-4">Done</a>
+              <a href="" class="btn-small light-blue lighten-1">Edit</a>
+            </div>
+            <div class="col s9">
+              <strong class="quaternary-color">{{ review.new_episode_review }}</strong>&nbsp;&nbsp; : &nbsp;&nbsp; <span class="quinary-color">{{ review.due_date }}</span>
+              {% if review.been_reviewed == "on" %}
+              &nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-exclamation-circle fas fa-clapperboard secondary-color tooltipped " data-position="right" data-tooltip="Needs Review"></i>
+              {% endif %}
+            </div>
           </div>
           <div class="collapsible-body">
             <strong>{{ review.new_episode_review }}</strong>
