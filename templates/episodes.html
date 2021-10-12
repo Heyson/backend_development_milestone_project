@@ -3,7 +3,13 @@
 <h5 class="secondary-color text-center-align">
     Manage Episodes to be Reviewed
   </h5>
-
+<div class="row">
+    <div class="col s12 center-align">
+        <a href="{{ url_for('add_episode') }}" class="btn-large light-blue darken-2 text-shadow">
+            Add Episode <i class="fas fa-plus square right"></i>
+        </a>
+    </div>
+</div>
 <div class="row">
     {% for episode in episodes %}
     <div class="col s12 m4">

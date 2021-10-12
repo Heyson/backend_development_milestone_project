@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h5 class="secondary-color text-center-align">
+    Add Episode
+</h5>
+<div class="row card-panel grey lighten-5">
+    <form class="col s12" method="POST" action="{{ url_for('add_episode')}}">
+        
+        <!-- episode title -->
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="fas fa-television prefix quaternary-color"></i>
+                <input id="new_episode_review" name="new_episode_review" minlength="5" maxlength="50" type="text" class="validate" required>
+                <label for="new_episode_review">Episode Title</label>
+            </div>
+        </div>
+       
+        <!-- submit button -->
+        <div class="row">
+            <div class="col s12 center-align">
+                <button type="submit" class="btn-large secondary-color">
+                    Add Episode <i class="fas fa-plus-square right"></i>
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+
+{% endblock %}

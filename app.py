@@ -149,6 +149,18 @@ def get_episodes():
     episodes = list(mongo.db.episodes.find().sort("new_episode_review", 1))
     return render_template("episodes.html", episodes=episodes)
 
+@app.route("/add_episode", methods =["GET", "POST"])
+def add_episode():
+    if request.method == "POST":
+        episode = {
+            "new_episode_review": request.form.get("new_episode_review")
+        }
+        mongo.db.episodes.insert_one(episode)
+        flash("New Episode Added")
+        return redirect(url_for("get_episodes"))
+
+    return render_template("add_episode.html")
+
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
