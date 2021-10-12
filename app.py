@@ -45,7 +45,7 @@ def signup():
         mongo.db.users.insert_one(signup)
 
         # put the new user into 'session' cookie
-        session["users"] = request.form.get("username").lower()
+        session["user"] = request.form.get("username").lower()
         flash("Sign Up Successful")
         return redirect(url_for("profile", username=session["user"]))
     return render_template("signup.html")
@@ -115,12 +115,27 @@ def manage_reviews():
     episodes = mongo.db.episodes.find().sort("new_episode_review", 1)
     return render_template("manage_reviews.html", episodes=episodes)
 
+
 @app.route("/edit_reviews/<review_id>", methods=["GET", "POST"])
 def edit_reviews(review_id):
-    review = mongo.db.reviews.find_one({"_id": ObjectId((review_id))})
+    if request.method == "POST":
+        been_reviewed = "on" if request.form.get("been_reviewed") else "off"
+        submit = {
+            "new_episode_review": request.form.get("new_episode_review"),
+            "episode_to_review": request.form.get("episode_to_review"),
+            "episode_review_description": request.form.get
+            ("episode_review_description"),
+            "been_reviewed": been_reviewed,
+            "due_date": request.form.get("due_date"),
+            "created_by": session["user"]
+        }
+        mongo.db.reviews.update({"_id": ObjectId(review_id)},submit)
+        flash("Review has been Successfully Edited.")
 
+    review = mongo.db.reviews.find_one({"_id": ObjectId((review_id))})
     episodes = mongo.db.episodes.find().sort("new_episode_review", 1)
-    return render_template("edit_reviews.html", review=review, episodes=episodes)
+    return render_template("edit_reviews.html", review=review,
+                            episodes=episodes)
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
