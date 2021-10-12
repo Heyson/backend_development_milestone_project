@@ -144,6 +144,12 @@ def delete_reviews(review_id):
     flash(("Review Successfully Deleted"))
     return redirect(url_for("get_episode_review"))
 
+@app.route("/get_episodes")
+def get_episodes():
+    episodes = list(mongo.db.episodes.find().sort("new_episode_review", 1))
+    return render_template("episodes.html", episodes=episodes)
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
