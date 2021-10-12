@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h5 class="secondary-color text-center-align">
+    Edit Episode to be Reviewed
+</h5>
+<div class="row card-panel grey lighten-5">
+    <form class="col s12" method="POST" action="{{ url_for('edit_reviews', episode_id=episodes._id)}}">
+        <!-- new episode to review -->
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="fas fa-television prefix quaternary-color"></i>
+                <select id="new_episode_review" name="new_episode_review" class="validate" required>
+                    <option value="" disabled selected ><em>Choose TV Show</em></option>
+                    {% for episode in episodes %}
+                    <option value="{{ episode.new_episode_review}}" title="Choose TV Show">{{ episode.new_episode_review}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+        <!-- episode title -->
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="fas fa-clapperboard prefix quaternary-color"></i>
+                <input id="episode_to_review" name="episode_to_review" minlength="5" maxlength="50" type="text" class="validate" required>
+                <label for="episode_to_review">Episode Title</label>
+            </div>
+        </div>
+        <!-- episode review description / synopsis -->
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="fas fa-align-left  prefix quaternary-color"></i>
+                <textarea id="episode_review_description" name="episode_review_description" minlength="5"
+                    maxlength="500" class="materialize-textarea validate" required></textarea>
+                <label for="episode_review_description">Episode Synopsis</label>
+            </div>
+        </div>
+        <!-- due date calendar -->
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="fas fa-calendar-alt prefix quaternary-color"></i>
+                <input id="due_date" name="due_date" type="text" class=" datepicker validate" required>
+                <label for="due_date">Due Date</label>
+            </div>
+        </div>
+        <!-- has been reviewed toggle -->
+        <div class="row">
+            <div class="input-field col s12">
+                <div class="switch">
+                    <i class="fas fa-exclamation-circle fas fa-clapperboard secondary-color tooltipped "
+                        data-position="right" data-tooltip="Needs Review"></i>
+                    <label for="been_reviewed">
+                        <input type="checkbox" id="been_reviewed" name="been_reviewed">
+                        <span class="lever"></span>
+                        Needs Review
+                    </label>
+                </div>
+            </div>
+        </div>
+        <!-- submit button -->
+        <div class="row">
+            <div class="col s12 center-align">
+                <button type="submit" class="btn-large secondary-color">
+                    Edit Episode To Review <i class="fas fa-edit right"></i>
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+
+{% endblock %}
