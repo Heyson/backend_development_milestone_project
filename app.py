@@ -115,6 +115,13 @@ def manage_reviews():
     episodes = mongo.db.episodes.find().sort("new_episode_review", 1)
     return render_template("manage_reviews.html", episodes=episodes)
 
+@app.route("/edit_reviews/<review_id>", methods=["GET", "POST"])
+def edit_reviews(review_id):
+    review = mongo.db.reviews.find_one({"_id": ObjectId((review_id))})
+
+    episodes = mongo.db.episodes.find().sort("new_episode_review", 1)
+    return render_template("edit_reviews.html", review=review, episodes=episodes)
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
