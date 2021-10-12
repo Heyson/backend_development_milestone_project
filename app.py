@@ -137,6 +137,13 @@ def edit_reviews(review_id):
     return render_template("edit_reviews.html", review=review,
                             episodes=episodes)
 
+
+@app.route("/delete_reviews/<review_id>")
+def delete_reviews(review_id):
+    mongo.db.reviews.remove({"_id": ObjectId(review_id)})
+    flash(("Review Successfully Deleted"))
+    return redirect(url_for("get_episode_review"))
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
