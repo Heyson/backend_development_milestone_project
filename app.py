@@ -160,7 +160,18 @@ def add_episode():
         return redirect(url_for("get_episodes"))
 
     return render_template("add_episode.html")
-
+    
+@app.route("/edit_episode/<episode_id>", methods=["GET", "POST"])
+def edit_episode(episode_id):
+    if request.method == "POST":
+        submit = {
+            "new_episode_review": request.form.get("new_episode_review")
+        }
+        mongo.db.episodes.update({"_id": ObjectId(episode_id)}, submit)
+        flash("Episode Successfully Updated")
+        return redirect(url_for("get_episodes"))
+    episode = mongo.db.episodes.find_one({"_id": ObjectId(episode_id)})
+    return render_template("edit_episode.html", episode=episode)
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
