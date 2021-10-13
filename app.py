@@ -173,6 +173,12 @@ def edit_episode(episode_id):
     episode = mongo.db.episodes.find_one({"_id": ObjectId(episode_id)})
     return render_template("edit_episode.html", episode=episode)
 
+@app.route("/delete_episode/<episode_id>")
+def delete_episode(episode_id):
+    mongo.db.episodes.remove({"_id": ObjectId(episode_id)})
+    flash("Episode Successfully Deleted")
+    return redirect(url_for("get_episodes"))
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
